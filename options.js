@@ -30,6 +30,7 @@ for (let input of inputs) {
 }
 
 function updateUI(commands) {
+  console.log('updating')
   for (let i = 0; i < commands.length; i++) {
     var thatInput = inputs.find((result) => {
       return result === commands[i].name;
