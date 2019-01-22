@@ -1,4 +1,4 @@
-# Firefox Shortcuts for Google Translate
+## Firefox Shortcuts for Google Translate
 
 ### Overview
 Adds missing keybindings support for https://translate.google.com
