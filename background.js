@@ -1,14 +1,22 @@
 // console.log('background.js started');
 
-// var opening = browser.runtime.openOptionsPage();
-// opening.then(onOpened, onError);
+// var port = browser.runtime.connect();
+var getCommands = browser.commands.getAll();
+var value;
 
-
-// browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//   console.log(message);
-// });
-
-
-// browser.commands.onCommand.addListener((name) => {
-//   console.log(name);
-// });
+getCommands.then((commands) => {
+  // console.log(commands);
+  var commands = commands;
+  browser.storage.local.get('commands').then(data => {
+    if (data.keys === undefined) {
+      // console.log('checking whether an object is stored');
+      // console.log(data);
+      browser.storage.local.set({commands}).then(success => {}, error => {});
+    } else {
+      browser.storage.local.get('commands').then(data => {
+        // console.log(data);
+        // port.postMessage({data})
+      });
+    }
+  });
+});
