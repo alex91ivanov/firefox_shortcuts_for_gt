@@ -62,7 +62,7 @@ var keysFormatted = {
 
 function assign(data, thisCall) {
   // console.log(thisCall)
-  if (thisCall === 'browser.storage.local.get') {
+  if (thisCall === 'browser.storage.sync.get') {
     for (let i of data.commands) {
       // console.log(JSON.stringify(i));
       // console.log(i.name);
@@ -71,7 +71,7 @@ function assign(data, thisCall) {
     }
     // console.log(thisCall)
     // console.log(JSON.stringify(keysFormatted))
-    keydownSwitch(null, keysFormatted, 'storage.local.get');
+    keydownSwitch(null, keysFormatted, 'storage.sync.get');
   } else {
     for (let i of data.commands.newValue) {
       // console.log(JSON.stringify(i))
@@ -84,14 +84,14 @@ function assign(data, thisCall) {
   }
 }
 
-browser.storage.local.get('commands', (data) => {
-  assign(data, 'browser.storage.local.get')
+browser.storage.sync.get('commands', (data) => {
+  assign(data, 'browser.storage.sync.get')
 });
 
 browser.storage.onChanged.addListener(assign)
 
 function keydownSwitch(event, keysFormatted, thisCall) {
-  console.log(thisCall)
+  // console.log(thisCall)
   // console.log(keysFormatted)
   if (event === null)
     return;

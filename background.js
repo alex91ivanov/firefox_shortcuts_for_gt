@@ -7,13 +7,13 @@ var value;
 getCommands.then((commands) => {
   // console.log(commands);
   var commands = commands;
-  browser.storage.local.get('commands').then(data => {
+  browser.storage.sync.get('commands').then(data => {
     if (data.keys === undefined) {
       // console.log('checking whether an object is stored');
       // console.log(data);
-      browser.storage.local.set({commands}).then(success => {}, error => {});
+      browser.storage.sync.set({commands}).then(success => {}, error => {});
     } else {
-      browser.storage.local.get('commands').then(data => {
+      browser.storage.sync.get('commands').then(data => {
         // console.log(data);
         // port.postMessage({data})
       });

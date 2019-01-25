@@ -78,5 +78,12 @@
             },
             "description": "Focus on input"
         }
+    },
+    "browser_specific_settings":
+    {
+        "gecko":
+        {
+            "id": "alex91ivanov@gmail.com"
+        }
     }
 }

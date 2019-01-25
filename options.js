@@ -39,14 +39,14 @@ window.addEventListener('load', event => {
   //   portFromCS = p;
   //   portFromCS.onMessage.addListener((m) => {
   //     // console.log(m.request);
-  //     let getCommands = browser.storage.local.get('commands');
+  //     let getCommands = browser.storage.sync.get('commands');
   //     getCommands.then(portFromCS.postMessage);
   //   });
   // }
 
   // browser.runtime.onConnect.addListener(connected);
 
-  browser.storage.local.get('commands').then(data => {
+  browser.storage.sync.get('commands').then(data => {
     updateUI(data);
   });
 
@@ -55,7 +55,7 @@ window.addEventListener('load', event => {
   function updateUI(data, fromManifest, thisCommand) {
     if (fromManifest === 'fromManifest') {
       var commands = data;
-      browser.storage.local.set({commands});
+      browser.storage.sync.set({commands});
 
       for (let i = 0; i < data.length; i++) {
         var thatInput = inputs.find(result => {
@@ -107,7 +107,7 @@ window.addEventListener('load', event => {
     // console.log(thisCommand)
     let thisTagId = thisCommand + '--input';
     let thisElement = document.getElementById(thisTagId);
-    let commandsFromStorage = await browser.storage.local.get('commands');
+    let commandsFromStorage = await browser.storage.sync.get('commands');
     let commandsFromManifest = await browser.commands.getAll();
     for (let i of commandsFromStorage.commands) {
       if (i.name === thisCommand) {
@@ -117,9 +117,9 @@ window.addEventListener('load', event => {
         break;
       }
     }
-    await browser.storage.local.set(commandsFromStorage);
+    await browser.storage.sync.set(commandsFromStorage);
     document.getElementById('popup-message').innerHTML = 'Updated <br>' + Date();
-    // let newCommands = browser.storage.local.get('commands');
+    // let newCommands = browser.storage.sync.get('commands');
     // newCommands.then(portFromCS.postMessage);
   }
 
