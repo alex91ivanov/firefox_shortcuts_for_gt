@@ -1,7 +1,8 @@
 ## Firefox Shortcuts for Google Translate
+https://addons.mozilla.org/en-US/firefox/addon/shortcuts-for-google-translate/
 
 ### Overview
-Adds missing keybindings support for https://translate.google.com
+Adds so missing keybindings support for https://translate.google.com
 
 Defaults are:
 
